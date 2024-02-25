@@ -7,6 +7,25 @@ class App {
     // Game logic for a number guessing game
     fun playNumberGame(digitsToGuess: Int = 4) {
         //TODO: build a menu which calls the functions and works with the return values
+        val generatedNumber = generateRandomNonRepeatingNumber(digitsToGuess)
+        val round = 0
+        val guessed = false
+
+        println("Welcome to the Number guessing Game!")
+        println("I generated a $digitsToGuess-digit number - your task is to guess it")
+
+        while (!guessed) {
+            print("Enter your tip: ")
+            val userInput = readlnOrNull()?.toInt()
+            val compareResult = checkUserInputAgainstGeneratedNumber(userInput, generatedNumber)
+            println("Output: ${compareResult.m}:${compareResult.n}")
+
+            if (compareResult.m == digitsToGuess) {
+                println("Congratulations! You guessed the number in $round rounds.")
+                guessedCorrectly = true
+            } else {
+                attempts = attempts+1
+            }
     }
 
     /**
@@ -23,9 +42,21 @@ class App {
      *         contain unique, non-repeating digits.
      * @throws IllegalArgumentException if the length is more than 9 or less than 1.
      */
-    val generateRandomNonRepeatingNumber: (Int) -> Int = { length ->
+    val generateRandomNonRepeatingNumber: (Int) -> Int = { length -> require(length in 1..9)
         //TODO implement the function
-        0   // return value is a placeholder
+        //  return value is a placeholder
+
+        val digits = mutableListOf<Int>()
+        while (digits.size < length)
+        {
+            var digit = Random.nextInt(1, 10)
+            if(digit !in digits)
+            {
+                digits.add(digit)
+            }
+        }
+
+
     }
 
     /**
@@ -51,6 +82,7 @@ class App {
 }
 
 fun main() {
-    println("Hello World!")
     // TODO: call the App.playNumberGame function with and without default arguments
+    val app = App()
+    app.playNumberGame()
 }

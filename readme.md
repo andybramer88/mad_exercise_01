@@ -9,17 +9,31 @@
 ## Questions
 ### Describe how Kotlin handles null safety. What are nullable types and non-null types in Kotlin? (0,5 points)
 
-<span style="color:blue">Provide your answer here! </span>
+<span style="color:blue">Provide your answer here!</span>
 > Note: you can also use code snippets to illustrate your answer. 
 
 ```kotlin 
 // example code snippet
 val a: String = "value" // non-null type
 ```
+A variable (codeword var) can be set NULL using following code:
+```kotlin 
+val a: String? = null
+```
+If a NULL is assigned, a red wave underline is under the code. By using "?", your function will not be called if NULL is assigned.
+You can overrule this with "!!" - but it is not good coding convention to use this, only under particular on-the-edge cases.
+```kotlin 
+println(a?.uppercase())
+println(a!!.uppercase())
+```
 
 ### What are lambda expressions and higher order functions in Kotlin? Why would you store a function inside a variable? (0,5 points)
 
 <span style="color:blue">Provide your answer here!</span>
+
+Higher order functions are functions that can receive a lambda expression. 
+Lambda expression is the concept that a anonymous function can be represent. 
+They can used for functional and clear coding style. 
 
 ### Provide a solution for the following number guessing game inside `App.kt`. (3 points)
 
