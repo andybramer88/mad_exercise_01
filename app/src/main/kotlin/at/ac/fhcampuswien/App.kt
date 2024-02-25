@@ -7,9 +7,9 @@ class App {
     // Game logic for a number guessing game
     fun playNumberGame(digitsToGuess: Int = 4) {
         //TODO: build a menu which calls the functions and works with the return values
-        val generatedNumber = generateRandomNonRepeatingNumber(digitsToGuess)
-        val round = 0
-        val guessed = false
+        val generatedNumber: Int = generateRandomNonRepeatingNumber(digitsToGuess)
+        val round: Int = 0
+        val guessed: Boolean = false
 
         println("Welcome to the Number guessing Game!")
         println("I generated a $digitsToGuess-digit number - your task is to guess it")
@@ -46,17 +46,15 @@ class App {
         //TODO implement the function
         //  return value is a placeholder
 
-        val digits = mutableListOf<Int>()
-        while (digits.size < length)
+        var digitsChain: String = ""
+        var digit: Int = 0
+        while (digitsToGuess.size < length)
         {
-            var digit = Random.nextInt(1, 10)
-            if(digit !in digits)
-            {
-                digits.add(digit)
+            digit = Random.nextInt(1, 10).toString()
+            if(!digitsChain.contains(digit)){
+                digitsChain + digit
             }
         }
-
-
     }
 
     /**
